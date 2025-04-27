@@ -1,12 +1,8 @@
-import { Button } from './components/ui/button'
+import ChatPage from './pages/ChatPage'
 
 function App() {
-
   return (
-    <>
-      <h1>Hello</h1>
-      <Button>Test</Button>
-    </>
+    <ChatPage />
   )
 }
 
