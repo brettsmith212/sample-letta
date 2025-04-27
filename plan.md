@@ -26,7 +26,7 @@
   - **Step Dependencies**: Step 2
   - **User Instructions**: None
 
-- [ ] Step 4: Create `MessageInput` component
+- [x] Step 4: Create `MessageInput` component
   - **Task**: Create a text input field with a "Send" button
   - **Description**: Sticky bottom input area for sending new messages.
   - **Files**:
