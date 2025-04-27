@@ -52,7 +52,7 @@
 
 ## Finishing Touches
 
-- [ ] Step 7: Improve responsiveness and mobile behavior
+- [x] Step 7: Improve responsiveness and mobile behavior
   - **Task**: Add Tailwind classes to ensure good look on smaller screens
   - **Description**: Basic responsiveness like padding, font sizing, max-widths.
   - **Files**:

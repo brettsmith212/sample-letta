@@ -80,20 +80,24 @@ const ChatPage: React.FC = () => {
   };
   
   return (
-    <div className="grid grid-rows-[auto_8fr_2fr] h-screen w-full bg-zinc-900 text-white dark">
-      <header className="border-b border-zinc-700">
-        <h1 className="text-lg font-bold py-1.5 text-center">Chat Interface</h1>
+    <div className="grid grid-rows-[auto_8fr_2fr] h-[100dvh] w-full bg-zinc-900 text-white dark">
+      <header className="border-b border-zinc-700 sticky top-0 z-10">
+        <h1 className="text-base sm:text-lg md:text-xl font-bold py-1 sm:py-1.5 text-center">Chat Interface</h1>
       </header>
       
       <div className="overflow-auto">
-        <MessageList messages={messages} />
+        <div className="max-w-3xl mx-auto w-full px-2 sm:px-4 md:px-6">
+          <MessageList messages={messages} />
+        </div>
       </div>
       
-      <div className="border-t border-zinc-700 bg-zinc-900">
-        <MessageInput 
-          onSendMessage={handleSendMessage} 
-          disabled={isProcessing}
-        />
+      <div className="border-t border-zinc-700 bg-zinc-900 sticky bottom-0 z-10">
+        <div className="max-w-3xl mx-auto w-full">
+          <MessageInput 
+            onSendMessage={handleSendMessage} 
+            disabled={isProcessing}
+          />
+        </div>
       </div>
     </div>
   );
