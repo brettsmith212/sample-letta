@@ -62,7 +62,7 @@
   - **Step Dependencies**: Step 6
   - **User Instructions**: Resize browser to test mobile look
 
-- [ ] Step 8: Apply polish using `shadcn` components
+- [x] Step 8: Apply polish using `shadcn` components
   - **Task**: Use `shadcn/ui` Button correctly for "Send", make bubbles look polished
   - **Description**: Ensure consistent design language across all UI pieces.
   - **Files**:

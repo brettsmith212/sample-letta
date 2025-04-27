@@ -81,8 +81,8 @@ const ChatPage: React.FC = () => {
   
   return (
     <div className="grid grid-rows-[auto_8fr_2fr] h-[100dvh] w-full bg-zinc-900 text-white dark">
-      <header className="border-b border-zinc-700 sticky top-0 z-10">
-        <h1 className="text-base sm:text-lg md:text-xl font-bold py-1 sm:py-1.5 text-center">Chat Interface</h1>
+      <header className="border-b border-zinc-700 sticky top-0 z-10 bg-zinc-900">
+        <h1 className="text-base sm:text-lg md:text-xl font-bold py-2 sm:py-2.5 text-center">Chat Interface</h1>
       </header>
       
       <div className="overflow-auto">
