@@ -18,7 +18,7 @@
   - **Step Dependencies**: Step 1
   - **User Instructions**: None
 
-- [ ] Step 3: Create `MessageBubble` subcomponent
+- [x] Step 3: Create `MessageBubble` subcomponent
   - **Task**: Create a styled individual message bubble inside `MessageList`
   - **Description**: Each message will be a bubble (sender or receiver style can be mimicked later), improving visual distinction.
   - **Files**:
