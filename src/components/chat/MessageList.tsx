@@ -1,4 +1,5 @@
 import React from 'react';
+import MessageBubble from './MessageBubble';
 
 interface Message {
   id: string;
@@ -13,9 +14,9 @@ interface MessageListProps {
 
 const MessageList: React.FC<MessageListProps> = ({ messages }) => {
   return (
-    <div className="flex flex-col space-y-4 overflow-y-auto h-full p-4">
+    <div className="flex flex-col space-y-3 p-3">
       {messages.length === 0 ? (
-        <div className="text-center text-gray-400 py-8">
+        <div className="text-center text-zinc-500 py-10 flex items-center justify-center h-full">
           No messages yet. Start the conversation!
         </div>
       ) : (
@@ -24,16 +25,11 @@ const MessageList: React.FC<MessageListProps> = ({ messages }) => {
             key={message.id}
             className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
           >
-            {/* MessageBubble component will be placed here in Step 3 */}
-            <div 
-              className={`max-w-[75%] px-4 py-2 rounded-lg ${
-                message.sender === 'user' 
-                  ? 'bg-blue-500 text-white rounded-tr-none' 
-                  : 'bg-gray-200 text-gray-800 rounded-tl-none'
-              }`}
-            >
-              {message.content}
-            </div>
+            <MessageBubble 
+              content={message.content}
+              sender={message.sender}
+              timestamp={message.timestamp}
+            />
           </div>
         ))
       )}

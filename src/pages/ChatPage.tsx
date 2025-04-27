@@ -41,17 +41,21 @@ const ChatPage: React.FC = () => {
   };
   
   return (
-    <div className="flex flex-col h-screen w-full bg-slate-100">
-      <h1 className="text-xl font-bold p-4 text-center border-b">Chat Interface</h1>
+    <div className="grid grid-rows-[auto_8fr_2fr] h-screen w-full bg-zinc-900 text-white dark">
+      <header className="border-b border-zinc-700">
+        <h1 className="text-lg font-bold py-1.5 text-center">Chat Interface</h1>
+      </header>
       
-      <div className="flex-1 overflow-hidden">
+      <div className="overflow-auto">
         <MessageList messages={messages} />
       </div>
       
-      <MessageInput 
-        onSendMessage={handleSendMessage} 
-        disabled={isProcessing}
-      />
+      <div className="border-t border-zinc-700 bg-zinc-900">
+        <MessageInput 
+          onSendMessage={handleSendMessage} 
+          disabled={isProcessing}
+        />
+      </div>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
   };
 
   return (
-    <div className="flex items-center gap-2 p-2 border-t bg-background sticky bottom-0">
+    <div className="flex items-center gap-3 p-4 h-full">
       <input
         type="text"
         value={message}
@@ -35,11 +35,12 @@ const MessageInput: React.FC<MessageInputProps> = ({
         onKeyDown={handleKeyDown}
         placeholder="Type a message..."
         disabled={disabled}
-        className="flex-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary/50"
+        className="flex-1 py-2 px-3 h-12 bg-zinc-800 border border-zinc-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500/50"
       />
       <Button 
         onClick={handleSendMessage} 
         disabled={disabled || message.trim() === ''}
+        className="bg-purple-600 hover:bg-purple-700 px-4 h-12"
       >
         Send
       </Button>
