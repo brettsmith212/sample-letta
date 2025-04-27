@@ -42,7 +42,7 @@
   - **Step Dependencies**: Step 2, Step 4
   - **User Instructions**: None
 
-- [ ] Step 6: Populate `MessageList` with mock data
+- [x] Step 6: Populate `MessageList` with mock data
   - **Task**: Add a few fake messages for initial UI testing
   - **Description**: Helps validate scrolling, layout, and bubble styling.
   - **Files**:
