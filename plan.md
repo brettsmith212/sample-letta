@@ -34,7 +34,7 @@
   - **Step Dependencies**: Step 1
   - **User Instructions**: None
 
-- [ ] Step 5: Wire components together in `ChatPage`
+- [x] Step 5: Wire components together in `ChatPage`
   - **Task**: Import and place `MessageList` and `MessageInput` inside `ChatPage`
   - **Description**: Make the full UI layout complete by connecting all components.
   - **Files**:

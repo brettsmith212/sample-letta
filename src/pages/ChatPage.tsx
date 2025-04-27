@@ -1,28 +1,57 @@
-import React from 'react';
-import { Button } from '../components/ui/button';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import MessageList from '../components/chat/MessageList';
+import MessageInput from '../components/chat/MessageInput';
+
+interface Message {
+  id: string;
+  content: string;
+  sender: 'user' | 'assistant';
+  timestamp: Date;
+}
 
 const ChatPage: React.FC = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [isProcessing, setIsProcessing] = useState(false);
+  
+  const handleSendMessage = (content: string) => {
+    // Add user message
+    const userMessage: Message = {
+      id: uuidv4(),
+      content,
+      sender: 'user',
+      timestamp: new Date(),
+    };
+    
+    setMessages(prevMessages => [...prevMessages, userMessage]);
+    
+    // Simulate assistant response after a delay
+    setIsProcessing(true);
+    setTimeout(() => {
+      const assistantMessage: Message = {
+        id: uuidv4(),
+        content: `I received: "${content}". This is a simulated response.`,
+        sender: 'assistant',
+        timestamp: new Date(),
+      };
+      
+      setMessages(prevMessages => [...prevMessages, assistantMessage]);
+      setIsProcessing(false);
+    }, 1000);
+  };
+  
   return (
-    <div className="flex flex-col h-screen w-full p-4 bg-slate-100 border-2 border-blue-200">
-      <h1 className="text-xl font-bold mb-4 text-center">Chat Interface</h1>
+    <div className="flex flex-col h-screen w-full bg-slate-100">
+      <h1 className="text-xl font-bold p-4 text-center border-b">Chat Interface</h1>
       
-      {/* Message history will go here */}
-      <div className="flex-1 bg-white rounded-lg shadow-sm p-4 mb-4 border border-gray-200">
-        <div className="text-center text-gray-500 py-20">
-          Message list will appear here (Step 2)
-        </div>
+      <div className="flex-1 overflow-hidden">
+        <MessageList messages={messages} />
       </div>
       
-      {/* Input field will go here */}
-      <div className="mt-4 flex gap-2 items-center">
-        <input 
-          type="text" 
-          placeholder="Type a message..."
-          className="flex-1 p-2 border rounded-md"
-          disabled
-        />
-        <Button>Send</Button>
-      </div>
+      <MessageInput 
+        onSendMessage={handleSendMessage} 
+        disabled={isProcessing}
+      />
     </div>
   );
 };
