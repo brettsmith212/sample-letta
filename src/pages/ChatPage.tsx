@@ -16,55 +16,52 @@ const mockMessages: Message[] = [
     id: '1',
     content: 'Hello! How can I help you today?',
     sender: 'assistant',
-    timestamp: new Date(Date.now() - 1000 * 60 * 20) // 20 minutes ago
+    timestamp: new Date(Date.now() - 1000 * 60 * 20)
   },
   {
     id: '2',
     content: 'I need help with my project. Can you explain how to implement a chat interface?',
     sender: 'user',
-    timestamp: new Date(Date.now() - 1000 * 60 * 19) // 19 minutes ago
+    timestamp: new Date(Date.now() - 1000 * 60 * 19)
   },
   {
     id: '3',
     content: 'Certainly! Creating a chat interface involves several components: a message display area, message bubbles, and an input field with a send button. Would you like me to explain how to implement each part?',
     sender: 'assistant',
-    timestamp: new Date(Date.now() - 1000 * 60 * 18) // 18 minutes ago
+    timestamp: new Date(Date.now() - 1000 * 60 * 18)
   },
   {
     id: '4',
     content: 'That would be great! Please focus on the React components I need.',
     sender: 'user',
-    timestamp: new Date(Date.now() - 1000 * 60 * 17) // 17 minutes ago
+    timestamp: new Date(Date.now() - 1000 * 60 * 17)
   },
   {
     id: '5',
     content: 'For a React-based chat interface, you need:\n1. A MessageList component to display all messages\n2. A MessageBubble component for each individual message\n3. A MessageInput component with a text field and send button\n4. A parent component to manage state and coordinate these parts\n\nWould you like me to provide some sample code?',
     sender: 'assistant',
-    timestamp: new Date(Date.now() - 1000 * 60 * 16) // 16 minutes ago
+    timestamp: new Date(Date.now() - 1000 * 60 * 16)
   }
 ];
 
 const ChatPage: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
-  
-  // Initialize with mock data on component mount
+
   useEffect(() => {
     setMessages(mockMessages);
   }, []);
-  
+
   const handleSendMessage = (content: string) => {
-    // Add user message
     const userMessage: Message = {
       id: uuidv4(),
       content,
       sender: 'user',
       timestamp: new Date(),
     };
-    
-    setMessages(prevMessages => [...prevMessages, userMessage]);
-    
-    // Simulate assistant response after a delay
+
+    setMessages(prev => [...prev, userMessage]);
+
     setIsProcessing(true);
     setTimeout(() => {
       const assistantMessage: Message = {
@@ -73,32 +70,34 @@ const ChatPage: React.FC = () => {
         sender: 'assistant',
         timestamp: new Date(),
       };
-      
-      setMessages(prevMessages => [...prevMessages, assistantMessage]);
+
+      setMessages(prev => [...prev, assistantMessage]);
       setIsProcessing(false);
     }, 1000);
   };
-  
+
   return (
-    <div className="grid grid-rows-[auto_8fr_2fr] h-[100dvh] w-full bg-zinc-900 text-white dark">
-      <header className="border-b border-zinc-700 sticky top-0 z-10 bg-zinc-900">
-        <h1 className="text-base sm:text-lg md:text-xl font-bold py-2 sm:py-2.5 text-center">Chat Interface</h1>
+    <div className="flex h-[100dvh] flex-col bg-gradient-to-b from-zinc-900 via-zinc-950 to-black text-foreground">
+      <header className="sticky top-0 z-10 border-b border-zinc-800 bg-zinc-900/70 backdrop-blur-md">
+        <h1 className="py-3 text-center text-lg font-bold sm:text-xl">
+          Chat Interface
+        </h1>
       </header>
-      
-      <div className="overflow-auto">
-        <div className="max-w-3xl mx-auto w-full px-2 sm:px-4 md:px-6">
+
+      <main className="flex-1 overflow-y-auto">
+        <div className="mx-auto w-full max-w-3xl px-4">
           <MessageList messages={messages} />
         </div>
-      </div>
-      
-      <div className="border-t border-zinc-700 bg-zinc-900 sticky bottom-0 z-10">
-        <div className="max-w-3xl mx-auto w-full">
-          <MessageInput 
-            onSendMessage={handleSendMessage} 
+      </main>
+
+      <footer className="border-t border-zinc-800 bg-zinc-900/70">
+        <div className="mx-auto w-full max-w-3xl">
+          <MessageInput
+            onSendMessage={handleSendMessage}
             disabled={isProcessing}
           />
         </div>
-      </div>
+      </footer>
     </div>
   );
 };

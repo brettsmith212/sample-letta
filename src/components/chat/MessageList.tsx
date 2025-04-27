@@ -14,18 +14,18 @@ interface MessageListProps {
 
 const MessageList: React.FC<MessageListProps> = ({ messages }) => {
   return (
-    <div className="flex flex-col space-y-2 sm:space-y-3 py-2 sm:py-3">
+    <div className="flex flex-col gap-3 py-4">
       {messages.length === 0 ? (
-        <div className="text-center text-zinc-500 py-6 sm:py-10 flex items-center justify-center h-full">
-          <p className="text-sm sm:text-base">No messages yet. Start the conversation!</p>
+        <div className="flex h-full items-center justify-center py-10 text-zinc-500">
+          <p className="text-base">No messages yet. Start the conversation!</p>
         </div>
       ) : (
         messages.map((message) => (
-          <div 
+          <div
             key={message.id}
             className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
           >
-            <MessageBubble 
+            <MessageBubble
               content={message.content}
               sender={message.sender}
               timestamp={message.timestamp}

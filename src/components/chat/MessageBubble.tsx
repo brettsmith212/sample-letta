@@ -16,29 +16,28 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
   className,
 }) => {
   const isUser = sender === 'user';
-  
+
   return (
-    <Card 
+    <Card
       className={cn(
-        'max-w-[85%] sm:max-w-[75%] md:max-w-[70%] border-0 shadow-md text-sm sm:text-base p-0', 
-        isUser 
-          ? 'bg-blue-500 !text-white ml-auto rounded-tr-none' 
-          : 'bg-blue-800 !text-white rounded-tl-none border border-blue-700',
+        'max-w-[85%] sm:max-w-[75%] md:max-w-[70%] px-4 pb-2 pt-3 shadow-lg',
+        isUser
+          ? 'bg-indigo-600 text-white rounded-xl rounded-tr-none'
+          : 'bg-zinc-800 text-zinc-100 border border-zinc-700 rounded-xl rounded-tl-none',
         className
       )}
-      style={{ backgroundColor: isUser ? '#3b82f6' : '#1e40af' }}
     >
-      <CardContent className="!p-0" style={{ padding: '16px 20px' }}>
-        <div className="whitespace-pre-wrap break-words overflow-auto">
-          {content}
-        </div>
+      <CardContent className="p-0">
+        <p className="whitespace-pre-wrap break-words">{content}</p>
       </CardContent>
-      
+
       {timestamp && (
-        <CardFooter className={cn(
-          '!p-0 text-[10px] sm:text-xs flex justify-end',
-          isUser ? 'text-white/70' : 'text-white/60'
-        )} style={{ padding: '4px 20px 12px' }}>
+        <CardFooter
+          className={cn(
+            'pt-1 text-[10px] sm:text-xs justify-end',
+            isUser ? 'text-white/70' : 'text-zinc-400'
+          )}
+        >
           {timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
         </CardFooter>
       )}
