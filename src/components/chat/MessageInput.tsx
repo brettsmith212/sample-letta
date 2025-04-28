@@ -36,7 +36,7 @@ const MessageInput: React.FC<MessageInputProps> = ({
         onKeyDown={handleKeyDown}
         placeholder="Type a message..."
         disabled={disabled}
-        className="flex-1 min-h-[72px] resize-none bg-zinc-800/90 border border-zinc-700 text-zinc-100 placeholder:text-zinc-400 focus-visible:ring-indigo-500 focus-visible:border-indigo-500"
+        className="flex-1 min-h-[72px] resize-none bg-zinc-800/90 border border-zinc-700 text-white placeholder:text-zinc-400 focus-visible:ring-indigo-500 focus-visible:border-indigo-500 font-medium text-[17px]" style={{ color: 'white' }}
       />
       <Button
         onClick={handleSendMessage}
