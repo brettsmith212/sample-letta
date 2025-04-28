@@ -20,7 +20,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
   return (
     <Card
       className={cn(
-        'max-w-[85%] sm:max-w-[75%] md:max-w-[70%] px-4 pb-2 pt-3 shadow-lg',
+        'max-w-[85%] sm:max-w-[75%] md:max-w-[70%] shadow-lg min-w-[180px]',
         isUser
           ? 'bg-indigo-600 text-white rounded-xl rounded-tr-none'
           : 'bg-zinc-800 text-zinc-100 border border-zinc-700 rounded-xl rounded-tl-none',
@@ -29,11 +29,12 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
       style={{
         background: isUser ? 'var(--sidebar-primary)' : 'var(--card)',
         color: isUser ? 'var(--sidebar-primary-foreground)' : 'var(--card-foreground)',
-        borderColor: isUser ? 'transparent' : 'var(--border)'
+        borderColor: isUser ? 'transparent' : 'var(--border)',
+        padding: '0.75rem 1rem 0.5rem'  // explicit padding override
       }}
     >
-      <CardContent>
-        <p className="whitespace-pre-wrap break-words">{content}</p>
+      <CardContent className="!px-0 !py-0">
+        <p className="whitespace-pre-wrap break-words py-1">{content}</p>
       </CardContent>
 
       {timestamp && (
