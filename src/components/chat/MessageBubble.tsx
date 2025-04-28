@@ -34,7 +34,7 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
       }}
     >
       <CardContent className="!px-0 !py-0">
-        <p className="whitespace-pre-wrap break-words py-1">{content}</p>
+        <p className="whitespace-pre-wrap break-words py-1 font-medium leading-relaxed text-large">{content}</p>
       </CardContent>
 
       {timestamp && (
