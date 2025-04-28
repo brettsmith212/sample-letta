@@ -26,8 +26,13 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
           : 'bg-zinc-800 text-zinc-100 border border-zinc-700 rounded-xl rounded-tl-none',
         className
       )}
+      style={{
+        background: isUser ? 'var(--sidebar-primary)' : 'var(--card)',
+        color: isUser ? 'var(--sidebar-primary-foreground)' : 'var(--card-foreground)',
+        borderColor: isUser ? 'transparent' : 'var(--border)'
+      }}
     >
-      <CardContent className="p-0">
+      <CardContent>
         <p className="whitespace-pre-wrap break-words">{content}</p>
       </CardContent>
 
@@ -37,6 +42,9 @@ const MessageBubble: React.FC<MessageBubbleProps> = ({
             'pt-1 text-[10px] sm:text-xs justify-end',
             isUser ? 'text-white/70' : 'text-zinc-400'
           )}
+          style={{
+            color: isUser ? 'rgba(255,255,255,0.7)' : 'var(--muted-foreground)'
+          }}
         >
           {timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
         </CardFooter>
